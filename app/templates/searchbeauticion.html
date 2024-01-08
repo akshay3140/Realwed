@@ -1,0 +1,432 @@
+{% extends 'base.html' %}
+    {% load static %}
+    {% block content %}    
+    <!-- /.header -->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <!-- page caption -->
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                    <div class="page-caption">
+                        <h1 class="page-title">Beautician</h1>
+                    </div>
+                </div>
+                <!-- /.page caption -->
+            </div>
+        </div>
+        <!-- page caption -->
+        <div class="page-breadcrumb">
+            <div class="container">
+                <div class="row">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'indexpage' %}" class="breadcrumb-link">Home</a></li>
+                            <li class="breadcrumb-item active text-white" aria-current="page">Beautician List</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- page breadcrumb -->
+    </div>
+    <div class="filter-form">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <form class="form-row" method=get action="/searchbeauticion">
+                        <!-- venue-type -->
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                            {% comment %} <select class="wide">
+                                <option value="Venue Type">Venue Type</option>
+                                <option value="Hotel">Hotel</option>
+                                <option value="Restaurant">Restaurant</option>
+                                <option value="Castle">Castle</option>
+                                <option value="Barns">Barns</option>
+                                <option value="Resort">Resort</option>
+                                <option value="Church">Church</option>
+                                <option value="In Door">In Door</option>
+                            </select> {% endcomment %}
+                            <input type="search" name="data" id="data" placeholder="search city" required>
+                        </div>
+                        <!-- /.venue-type -->
+                        <!-- distance km -->
+                        {% comment %} <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                            <select class="wide">
+                                <option value="Guest">Guest</option>
+                                <option value="1 - 100">1 - 100</option>
+                                <option value="100 - 200">100 - 200</option>
+                                <option value="200 - 500">200 - 500</option>
+                                <option value="500 - 1000">500 - 1000</option>
+                            </select>
+                        </div>
+                        <!-- /.distance km -->
+                        <!-- price -->
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                            <select class="wide">
+                                <option value="Price">Price</option>
+                                <option value="$100 to$500">$100 to $500</option>
+                                <option value="$500 to $2000">$500 to $2000</option>
+                                <option value="$2000 to $3500">$2000 to $3500</option>
+                                <option value="$3500 to $4500">$3500 to $4500</option>
+                                <option value="$4500 to $5500">$4500 to $5500</option>
+                            </select>
+                        </div> {% endcomment %}
+                        <!-- /.price -->
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 ">
+                            <button class="btn btn-default btn-block" type="submit">Find Venue</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header -->
+    <div class="content">
+        <div class="container">
+            <div class="row">
+            {% for i in deep %}
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="vendor-thumbnail">
+                        <!-- Vendor thumbnail -->
+                        <div class="vendor-img">
+                            <!-- Vendor img -->
+                            <a href="/beauticion/{{i.id}}"><img src="{{i.b_image.url}}" alt="" class="img-fluid"></a>
+                            {% comment %} <div class="wishlist-sign"><a href="#" class="btn-wishlist"><i class="fa fa-heart"></i></a></div> {% endcomment %}
+                        </div>
+                        <!-- /.Vendor img -->
+                        <div class="vendor-content">
+                            <!-- Vendor Content -->
+                            <h2 class="vendor-title"><a href="#" class="title">{{i.b_name}}</a></h2>
+                            <p class="vendor-address">{{i.bcity}}</p>
+                        </div>
+                        <!-- /.Vendor Content -->
+                        <div class="vendor-meta">
+                            <div class="vendor-meta-item vendor-meta-item-bordered">
+                                <span class="vendor-price">
+                                    {{i.b_Price}}
+                                </span>
+                                <span class="vendor-text">Start From</span></div>
+                            <div class="vendor-meta-item vendor-meta-item-bordered">
+                                <span class="rating-star">
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rate-mute"></i>
+                                    </span>
+                                <span class="rating-count vendor-text">(20)</span></div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% comment %} <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="vendor-thumbnail">
+                        <!-- Vendor thumbnail -->
+                        <div class="vendor-img">
+                            <!-- Vendor img -->
+                            <a href="#"><img src="images/supplier-cake-2.jpg" alt="" class="img-fluid"></a>
+                            <div class="wishlist-sign"><a href="#" class="btn-wishlist"><i class="fa fa-heart"></i></a></div>
+                        </div>
+                        <!-- /.Vendor img -->
+                        <div class="vendor-content">
+                            <!-- Vendor Content -->
+                            <h2 class="vendor-title"><a href="#" class="title">Indulge Wedding Cake</a></h2>
+                            <p class="vendor-address">Surat, India</p>
+                        </div>
+                        <!-- /.Vendor Content -->
+                        <div class="vendor-meta">
+                            <div class="vendor-meta-item vendor-meta-item-bordered">
+                                <span class="vendor-price">
+                                    $150
+                                </span>
+                                <span class="vendor-text">Start From</span></div>
+                            <div class="vendor-meta-item vendor-meta-item-bordered">
+                                <span class="rating-star">
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rate-mute"></i>
+                                    </span>
+                                <span class="rating-count vendor-text">(20)</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="vendor-thumbnail">
+                        <!-- Vendor thumbnail -->
+                        <div class="vendor-img">
+                            <!-- Vendor img -->
+                            <a href="#"><img src="images/supplier-cake-3.jpg" alt="" class="img-fluid"></a>
+                            <div class="wishlist-sign"><a href="#" class="btn-wishlist"><i class="fa fa-heart"></i></a></div>
+                        </div>
+                        <!-- /.Vendor img -->
+                        <div class="vendor-content">
+                            <!-- Vendor Content -->
+                            <h2 class="vendor-title"><a href="#" class="title">Sugar & Spice Cake</a></h2>
+                            <p class="vendor-address">Vapi, Gujarat.</p>
+                        </div>
+                        <!-- /.Vendor Content -->
+                        <div class="vendor-meta">
+                            <div class="vendor-meta-item vendor-meta-item-bordered">
+                                <span class="vendor-price">
+                                    $150
+                                </span>
+                                <span class="vendor-text">Start From</span></div>
+                            <div class="vendor-meta-item vendor-meta-item-bordered">
+                                <span class="rating-star">
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rate-mute"></i>
+                                    </span>
+                                <span class="rating-count vendor-text">(20)</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="vendor-thumbnail">
+                        <!-- Vendor thumbnail -->
+                        <div class="vendor-img">
+                            <!-- Vendor img -->
+                            <a href="#"><img src="images/supplier-cake-4.jpg" alt="" class="img-fluid"></a>
+                            <div class="wishlist-sign"><a href="#" class="btn-wishlist"><i class="fa fa-heart"></i></a></div>
+                        </div>
+                        <!-- /.Vendor img -->
+                        <div class="vendor-content">
+                            <!-- Vendor Content -->
+                            <h2 class="vendor-title"><a href="#" class="title">Sweet Thang Wedding Cake</a></h2>
+                            <p class="vendor-address">Rajkot, Gujarat.</p>
+                        </div>
+                        <!-- /.Vendor Content -->
+                        <div class="vendor-meta">
+                            <div class="vendor-meta-item vendor-meta-item-bordered">
+                                <span class="vendor-price">
+                                    $150
+                                </span>
+                                <span class="vendor-text">Start From</span></div>
+                            <div class="vendor-meta-item vendor-meta-item-bordered">
+                                <span class="rating-star">
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rate-mute"></i>
+                                    </span>
+                                <span class="rating-count vendor-text">(20)</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="vendor-thumbnail">
+                        <!-- Vendor thumbnail -->
+                        <div class="vendor-img">
+                            <!-- Vendor img -->
+                            <a href="#"><img src="images/supplier-cake-5.jpg" alt="" class="img-fluid"></a>
+                            <div class="wishlist-sign"><a href="#" class="btn-wishlist"><i class="fa fa-heart"></i></a></div>
+                        </div>
+                        <!-- /.Vendor img -->
+                        <div class="vendor-content">
+                            <!-- Vendor Content -->
+                            <h2 class="vendor-title"><a href="#" class="title">Whipped Wedding Cake</a></h2>
+                            <p class="vendor-address">Baroda, Gujarat.</p>
+                        </div>
+                        <!-- /.Vendor Content -->
+                        <div class="vendor-meta">
+                            <div class="vendor-meta-item vendor-meta-item-bordered">
+                                <span class="vendor-price">
+                                    $150
+                                </span>
+                                <span class="vendor-text">Start From</span></div>
+                            <div class="vendor-meta-item vendor-meta-item-bordered">
+                                <span class="rating-star">
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rate-mute"></i>
+                                    </span>
+                                <span class="rating-count vendor-text">(20)</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="vendor-thumbnail">
+                        <!-- Vendor thumbnail -->
+                        <div class="vendor-img">
+                            <!-- Vendor img -->
+                            <a href="#"><img src="images/supplier-cake-7.jpg" alt="" class="img-fluid"></a>
+                            <div class="wishlist-sign"><a href="#" class="btn-wishlist"><i class="fa fa-heart"></i></a></div>
+                        </div>
+                        <!-- /.Vendor img -->
+                        <div class="vendor-content">
+                            <!-- Vendor Content -->
+                            <h2 class="vendor-title"><a href="#" class="title">Frankencake</a></h2>
+                            <p class="vendor-address">Baroda, Gujarat.</p>
+                            <!-- /.Vendor meta -->
+                        </div>
+                        <!-- /.Vendor Content -->
+                        <div class="vendor-meta">
+                            <div class="vendor-meta-item vendor-meta-item-bordered">
+                                <span class="vendor-price">
+                                    $150
+                                </span>
+                                <span class="vendor-text">Start From</span></div>
+                            <div class="vendor-meta-item vendor-meta-item-bordered">
+                                <span class="rating-star">
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rate-mute"></i>
+                                    </span>
+                                <span class="rating-count vendor-text">(20)</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="vendor-thumbnail">
+                        <!-- Vendor thumbnail -->
+                        <div class="vendor-img">
+                            <!-- Vendor img -->
+                            <a href="#"><img src="images/supplier-cake-8.jpg" alt="" class="img-fluid"></a>
+                            <div class="wishlist-sign"><a href="#" class="btn-wishlist"><i class="fa fa-heart"></i></a></div>
+                        </div>
+                        <!-- /.Vendor img -->
+                        <div class="vendor-content">
+                            <!-- Vendor Content -->
+                            <h2 class="vendor-title"><a href="#" class="title">Red Velvet Wedding Cake</a></h2>
+                            <p class="vendor-address">Ahmedabad, Gujarat.</p>
+                        </div>
+                        <!-- /.Vendor Content -->
+                        <div class="vendor-meta">
+                            <div class="vendor-meta-item vendor-meta-item-bordered">
+                                <span class="vendor-price">
+                                    $150
+                                </span>
+                                <span class="vendor-text">Start From</span></div>
+                            <div class="vendor-meta-item vendor-meta-item-bordered">
+                                <span class="rating-star">
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rate-mute"></i>
+                                    </span>
+                                <span class="rating-count vendor-text">(20)</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="vendor-thumbnail">
+                        <!-- Vendor thumbnail -->
+                        <div class="vendor-img">
+                            <!-- Vendor img -->
+                            <a href="#"><img src="images/supplier-cake-9.jpg" alt="" class="img-fluid"></a>
+                            <div class="wishlist-sign"><a href="#" class="btn-wishlist"><i class="fa fa-heart"></i></a></div>
+                        </div>
+                        <!-- /.Vendor img -->
+                        <div class="vendor-content">
+                            <!-- Vendor Content -->
+                            <h2 class="vendor-title"><a href="#" class="title">Pistachio Cake Store</a></h2>
+                            <p class="vendor-address">Surat, Gujarat.</p>
+                        </div>
+                        <!-- /.Vendor Content -->
+                        <div class="vendor-meta">
+                            <div class="vendor-meta-item vendor-meta-item-bordered">
+                                <span class="vendor-price">
+                                    $150
+                                </span>
+                                <span class="vendor-text">Start From</span></div>
+                            <div class="vendor-meta-item vendor-meta-item-bordered">
+                                <span class="rating-star">
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rate-mute"></i>
+                                    </span>
+                                <span class="rating-count vendor-text">(20)</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="vendor-thumbnail">
+                        <!-- Vendor thumbnail -->
+                        <div class="vendor-img">
+                            <!-- Vendor img -->
+                            <a href="#"><img src="images/supplier-cake-6.jpg" alt="" class="img-fluid"></a>
+                            <div class="wishlist-sign"><a href="#" class="btn-wishlist"><i class="fa fa-heart"></i></a></div>
+                        </div>
+                        <!-- /.Vendor img -->
+                        <div class="vendor-content">
+                            <!-- Vendor Content -->
+                            <h2 class="vendor-title"><a href="#" class="title">Bacon Wedding Cake</a></h2>
+                            <p class="vendor-address">Vapi, India</p>
+                        </div>
+                        <!-- /.Vendor Content -->
+                        <div class="vendor-meta">
+                            <div class="vendor-meta-item vendor-meta-item-bordered">
+                                <span class="vendor-price">
+                                    $150
+                                </span>
+                                <span class="vendor-text">Start From</span></div>
+                            <div class="vendor-meta-item vendor-meta-item-bordered">
+                                <span class="rating-star">
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rated"></i>
+                                    <i class="fa fa-star rate-mute"></i>
+                                    </span>
+                                <span class="rating-count vendor-text">(20)</span></div> {% endcomment %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="pagination justify-content-center">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item active"><a class="page-link " href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <!-- social-media-section -->
+    <div class="social-media-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-7 col-lg-7 col-md-6 col-sm-12 col-12">
+                    <h3 class="text-white mb0 mt10">Would you like to connect with us</h3>
+                </div>
+                <div class="col-xl-5 col-lg-5 col-md-6 col-sm-12 col-12 text-right">
+                    <div class="social-icons">
+                        <a href="#" class="icon-square"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="icon-square"><i class="fab fa-twitter"></i> </a>
+                        <a href="#" class="icon-square"><i class="fab fa-google-plus-g"></i></a>
+                        <a href="#" class="icon-square"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="icon-square"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.social-media-section -->
+    <!-- footer-section -->
+{% endblock %}
+</body>
+
+
+</html>

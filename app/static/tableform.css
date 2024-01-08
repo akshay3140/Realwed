@@ -1,0 +1,35 @@
+.nav
+{
+	margin-top: 0px;
+	height: 110px;
+	background-color: #203239;
+	border-bottom: #a8dadc 3px solid;
+}
+.img
+{
+	
+	margin-top: 6px;
+}
+nav ol
+{
+	float: right;
+}
+nav ol li 
+{
+    font-size: 20px;
+	display: inline-block;
+	margin-right: 50px;
+	margin-top: 30px;
+	padding: 5px;
+	text-transform: capitalize;
+}
+nav ol li a
+{
+	display: block;
+	color: white;
+}
+nav ol li a:hover
+{
+	color:yellow ;
+	font-weight: bold;
+}
